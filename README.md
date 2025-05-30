@@ -170,10 +170,8 @@ Si deseas contribuir al proyecto, sigue estas pautas:
 3. Sube los cambios a tu fork (`git push origin feature/nueva-funcionalidad`)
 4. Crea un Pull Request
 
-## Licencia
 
-Este proyecto está licenciado bajo [tu licencia aquí].
 
 ## Contacto
 
-Para más información, contacta al equipo de desarrollo en [correo electrónico de contacto].
+Para más información, contacta al equipo de desarrollo en Kleyvercell2@gmail.com .
