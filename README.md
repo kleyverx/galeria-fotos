@@ -31,7 +31,7 @@ Sigue estos pasos para configurar el entorno de desarrollo:
 
 ```bash
 # Clonar el repositorio
-git clone <url-del-repositorio>
+git clone https://github.com/kleyverx/galeria-fotos.git
 cd kleyver-app
 
 # Instalar dependencias
