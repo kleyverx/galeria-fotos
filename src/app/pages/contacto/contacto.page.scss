@@ -1,0 +1,355 @@
+.contact-header {
+  padding: 35px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, rgba(var(--ion-color-primary-rgb), 0.05), transparent);
+  margin-bottom: 20px;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--ion-color-tertiary);
+    border-radius: 3px;
+  }
+}
+
+.contact-header h1 {
+  color: var(--ion-color-tertiary);
+  font-size: 34px;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.contact-header p {
+  color: var(--ion-text-color);
+  line-height: 1.8;
+  margin: 0 auto;
+  max-width: 650px;
+  font-size: 16px;
+}
+
+/* Formulario */
+.form-container {
+  padding: 0 20px;
+  max-width: 650px;
+  margin: 0 auto 30px;
+  background: rgba(var(--ion-color-light-rgb), 0.1);
+  border-radius: 16px;
+  padding: 25px 20px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(var(--ion-color-primary-rgb), 0.1);
+}
+
+.custom-list {
+  background: transparent;
+  padding: 0;
+}
+
+ion-item {
+  --background: rgba(var(--ion-color-light-rgb), 0.2);
+  --border-radius: 10px;
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  margin-bottom: 20px;
+  --border-width: 1px;
+  --border-color: rgba(var(--ion-color-tertiary-rgb), 0.15);
+  --highlight-height: 0;
+}
+
+ion-item.item-has-focus {
+  --background: rgba(var(--ion-color-tertiary-rgb), 0.15);
+  --border-color: var(--ion-color-tertiary);
+  box-shadow: 0 0 0 1px var(--ion-color-tertiary);
+}
+
+ion-input, ion-textarea, ion-select {
+  --color: var(--ion-text-color);
+  --placeholder-color: var(--ion-color-medium);
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-size: 16px;
+}
+
+ion-label {
+  --color: var(--ion-color-primary);
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.error-message {
+  margin-top: -15px;
+  margin-bottom: 20px;
+  padding-left: 16px;
+  font-size: 0.85rem;
+  display: block;
+  opacity: 0.9;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 0.9; transform: translateY(0); }
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 25px 10px;
+  background: rgba(var(--ion-color-tertiary-rgb), 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  
+  &:hover {
+    background: rgba(var(--ion-color-tertiary-rgb), 0.15);
+  }
+}
+
+ion-checkbox {
+  --size: 22px;
+  --checkbox-background: transparent;
+  --checkbox-background-checked: var(--ion-color-tertiary);
+  --border-color: var(--ion-color-medium);
+  --border-color-checked: var(--ion-color-tertiary);
+  --checkmark-color: var(--ion-color-tertiary-contrast);
+  --border-radius: 6px;
+  --border-width: 2px;
+}
+
+.checkbox-container ion-label {
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--ion-text-color);
+}
+
+.submit-button {
+  --background: linear-gradient(135deg, var(--ion-color-tertiary), var(--ion-color-tertiary-shade));
+  --color: var(--ion-color-tertiary-contrast);
+  margin-top: 25px;
+  height: 50px;
+  font-size: 16px;
+  --border-radius: 25px;
+  --box-shadow: 0 8px 20px rgba(var(--ion-color-tertiary-rgb), 0.35);
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover {
+    --background: linear-gradient(135deg, var(--ion-color-tertiary-shade), var(--ion-color-tertiary));
+    transform: translateY(-3px);
+    --box-shadow: 0 15px 30px rgba(var(--ion-color-tertiary-rgb), 0.45);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(-1px);
+    --box-shadow: 0 5px 15px rgba(var(--ion-color-tertiary-rgb), 0.3);
+  }
+}
+
+/* Redes sociales */
+.social-container {
+  padding: 30px 20px;
+  text-align: center;
+  margin-bottom: 25px;
+  background: linear-gradient(135deg, rgba(var(--ion-color-tertiary-rgb), 0.05), rgba(var(--ion-color-secondary-rgb), 0.05));
+  border-radius: 20px;
+  margin: 25px 20px;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ion-color-tertiary), var(--ion-color-secondary));
+    border-radius: 2px;
+  }
+}
+
+.social-container h2 {
+  color: var(--ion-color-primary);
+  font-size: 26px;
+  margin-bottom: 25px;
+  margin-top: 15px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-tertiary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.social-button {
+  width: 60px;
+  height: 60px;
+  --border-radius: 50%;
+  --background: linear-gradient(135deg, rgba(var(--ion-color-tertiary-rgb), 0.1), rgba(var(--ion-color-secondary-rgb), 0.1));
+  --color: var(--ion-color-tertiary);
+  border: 2px solid rgba(var(--ion-color-tertiary-rgb), 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  /* Documentación: Estilo mejorado para los botones de redes sociales */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(var(--ion-color-tertiary-rgb), 0.2), transparent);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+  }
+  
+  &:hover {
+    --background: linear-gradient(135deg, rgba(var(--ion-color-tertiary-rgb), 0.2), rgba(var(--ion-color-secondary-rgb), 0.2));
+    --color: var(--ion-color-tertiary-shade);
+    transform: translateY(-5px) scale(1.1);
+    border-color: var(--ion-color-tertiary);
+    --box-shadow: 0 10px 25px rgba(var(--ion-color-tertiary-rgb), 0.3);
+    
+    &::before {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(-2px) scale(1.05);
+  }
+}
+
+.social-button ion-icon {
+  font-size: 28px;
+  z-index: 1;
+  position: relative;
+}
+
+/* Información de contacto */
+.contact-info {
+  padding: 30px 20px 50px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(var(--ion-color-primary-rgb), 0.03), rgba(var(--ion-color-tertiary-rgb), 0.03));
+  margin: 25px 20px 40px;
+  border-radius: 20px;
+  border: 1px solid rgba(var(--ion-color-primary-rgb), 0.1);
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ion-color-primary), var(--ion-color-tertiary));
+    border-radius: 2px 2px 0 0;
+  }
+}
+
+.contact-info h2 {
+  color: var(--ion-color-primary);
+  font-size: 26px;
+  margin-bottom: 30px;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--ion-color-primary), var(--ion-color-tertiary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  background: rgba(var(--ion-color-light-rgb), 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(var(--ion-color-primary-rgb), 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--ion-color-tertiary), var(--ion-color-secondary));
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover {
+    background: rgba(var(--ion-color-tertiary-rgb), 0.1);
+    border-color: rgba(var(--ion-color-tertiary-rgb), 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(var(--ion-color-primary-rgb), 0.1);
+    
+    &::before {
+      transform: scaleY(1);
+    }
+    
+    ion-icon {
+      transform: scale(1.2);
+      color: var(--ion-color-tertiary-shade);
+    }
+  }
+}
+
+.info-item ion-icon {
+  color: var(--ion-color-tertiary);
+  font-size: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.info-item p {
+  color: var(--ion-text-color);
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}

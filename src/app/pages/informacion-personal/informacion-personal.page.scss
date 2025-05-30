@@ -1,0 +1,202 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 30px;
+  position: relative;
+  background: linear-gradient(to bottom, rgba(var(--ion-color-primary-rgb), 0.1), transparent);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--ion-color-tertiary), transparent);
+  }
+}
+
+.profile-image {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid var(--ion-color-tertiary);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.profile-image:hover img {
+  transform: scale(1.1);
+}
+
+.profile-name {
+  margin-top: 25px;
+  margin-bottom: 5px;
+  color: var(--ion-color-tertiary);
+  font-size: 36px;
+  text-align: center;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  letter-spacing: 1px;
+}
+
+.profile-role {
+  color: var(--ion-color-primary);
+  font-size: 18px;
+  margin-top: 5px;
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background: linear-gradient(to right, var(--ion-color-primary), var(--ion-color-tertiary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bio-section {
+  padding: 20px 25px;
+  margin: 0 15px;
+  border-radius: 15px;
+  background: rgba(var(--ion-color-primary-rgb), 0.05);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+.bio-section p {
+  color: var(--ion-text-color);
+  line-height: 1.8;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 16px;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.custom-card {
+  margin: 25px 15px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  border: 1px solid rgba(var(--ion-color-light-rgb), 0.5);
+}
+
+ion-card-header {
+  background: rgba(var(--ion-color-primary-rgb), 0.05);
+  border-bottom: 1px solid rgba(var(--ion-color-tertiary-rgb), 0.2);
+}
+
+ion-card-title {
+  color: var(--ion-color-primary);
+  font-size: 24px;
+  padding: 5px 0;
+  letter-spacing: 0.5px;
+}
+
+.custom-list {
+  background: transparent;
+  padding: 5px 0;
+}
+
+.custom-list ion-item {
+  --background: transparent;
+  --color: var(--ion-text-color);
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+  --border-color: rgba(var(--ion-color-tertiary-rgb), 0.15);
+}
+
+.custom-list ion-item h2 {
+  font-weight: 600;
+  color: var(--ion-color-primary);
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.custom-list ion-item p {
+  color: var(--ion-color-medium);
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.custom-list ion-icon {
+  font-size: 22px;
+}
+
+/* Línea de tiempo */
+.timeline {
+  position: relative;
+  padding: 10px 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--ion-color-primary);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 25px;
+  padding-left: 50px;
+}
+
+.timeline-badge {
+  position: absolute;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--ion-color-tertiary);
+  color: var(--ion-color-tertiary-contrast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.timeline-content {
+  background: rgba(var(--ion-color-light-rgb), 0.1);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+  color: var(--ion-color-primary);
+  font-size: 18px;
+}
+
+.timeline-content p {
+  margin-bottom: 0;
+  color: var(--ion-color-medium);
+}

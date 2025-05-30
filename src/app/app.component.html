@@ -1,0 +1,39 @@
+<ion-app>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Fotocolección</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    
+    <ion-content>
+      <ion-router-outlet></ion-router-outlet>
+    </ion-content>
+    
+    <!-- Tab Bar Inferior -->
+    <ion-tabs>
+      <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="inicio" [routerLink]="['/inicio']" routerLinkActive="tab-selected">
+          <ion-icon name="home-outline"></ion-icon>
+          <ion-label>Inicio</ion-label>
+        </ion-tab-button>
+        
+        <ion-tab-button tab="informacion-personal" [routerLink]="['/informacion-personal']" routerLinkActive="tab-selected">
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label>Sobre Mí</ion-label>
+        </ion-tab-button>
+        
+        <ion-tab-button tab="contacto" [routerLink]="['/contacto']" routerLinkActive="tab-selected">
+          <ion-icon name="mail-outline"></ion-icon>
+          <ion-label>Contacto</ion-label>
+        </ion-tab-button>
+        
+        <!-- Botón de tema en la barra inferior -->
+        <ion-tab-button (click)="cycleTheme()">
+          <ion-icon [name]="getThemeIcon()"></ion-icon>
+          <ion-label>Tema</ion-label>
+        </ion-tab-button>
+      </ion-tab-bar>
+    </ion-tabs>
+  </div>
+</ion-app>

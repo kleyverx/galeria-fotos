@@ -1,0 +1,109 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Contacto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contact-header" appFadeIn [duration]="800">
+    <h1 appSlideInLeft [duration]="600">¡Hablemos de fotografía y viajes!</h1>
+    <p appSlideInRight [duration]="600" [delay]="200">
+      Si te gustan mis fotografías o quieres conocer más sobre los lugares que he visitado,
+      no dudes en contactarme. También puedes escribirme si quieres compartir tus propias
+      experiencias de viaje o tienes sugerencias para futuros destinos.
+    </p>
+  </div>
+
+  <div class="form-container" appFadeIn [duration]="700" [delay]="400">
+    <!-- Documentación: Uso un formulario reactivo de Angular para validación -->
+    <form [formGroup]="contactForm" (ngSubmit)="enviarMensaje()">
+      <ion-list class="custom-list">
+        <ion-item appSlideInLeft [delay]="600">
+          <ion-label position="floating">Nombre <ion-text color="tertiary">*</ion-text></ion-label>
+          <ion-input type="text" formControlName="nombre" required></ion-input>
+        </ion-item>
+        <ion-note *ngIf="nombreInvalido" color="danger" class="error-message">
+          <!-- Documentación: Uso *ngIf para mostrar mensajes de error condicionales -->
+          El nombre es obligatorio
+        </ion-note>
+
+        <ion-item appSlideInRight [delay]="700">
+          <ion-label position="floating">Email <ion-text color="tertiary">*</ion-text></ion-label>
+          <ion-input type="email" formControlName="email" required></ion-input>
+        </ion-item>
+        <ion-note *ngIf="emailInvalido" color="danger" class="error-message">
+          Por favor, introduce un email válido
+        </ion-note>
+
+        <ion-item appSlideInLeft [delay]="800">
+          <ion-label position="floating">Asunto</ion-label>
+          <ion-select formControlName="asunto" interface="action-sheet">
+            <!-- Documentación: Uso ion-select con interfaz de action-sheet para mejor experiencia móvil -->
+            <ion-select-option value="info">Información sobre destinos</ion-select-option>
+            <ion-select-option value="collab">Propuesta de colaboración</ion-select-option>
+            <ion-select-option value="feedback">Comentarios sobre fotografías</ion-select-option>
+            <ion-select-option value="other">Otro</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item appSlideInRight [delay]="900">
+          <ion-label position="floating">Mensaje <ion-text color="tertiary">*</ion-text></ion-label>
+          <ion-textarea rows="6" formControlName="mensaje" required></ion-textarea>
+        </ion-item>
+        <ion-note *ngIf="mensajeInvalido" color="danger" class="error-message">
+          El mensaje es obligatorio y debe tener al menos 10 caracteres
+        </ion-note>
+
+        <div class="checkbox-container" appFadeIn [delay]="1000">
+          <ion-checkbox formControlName="suscripcion"></ion-checkbox>
+          <ion-label>Deseo recibir novedades sobre viajes y fotografía</ion-label>
+        </div>
+      </ion-list>
+
+      <div class="ion-padding" appFadeIn [delay]="1100">
+        <ion-button expand="block" type="submit" [disabled]="contactForm.invalid" class="submit-button">
+          <ion-icon name="paper-plane-outline" slot="start"></ion-icon>
+          Enviar Mensaje
+        </ion-button>
+      </div>
+    </form>
+  </div>
+
+  <div class="social-container" appFadeIn [duration]="800" [delay]="1200">
+    <h2 appSlideInLeft [duration]="600" [delay]="1300">Sígueme en redes sociales</h2>
+    <div class="social-buttons">
+      <!-- Documentación: Botones para redes sociales con iconos -->
+      <ion-button fill="clear" class="social-button" appPulse="hover" #socialBtn1>
+        <ion-icon name="logo-instagram"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="social-button" appPulse="hover" #socialBtn2>
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="social-button" appPulse="hover" #socialBtn3>
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear" class="social-button" appPulse="hover" #socialBtn4>
+        <ion-icon name="logo-youtube"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="contact-info" appFadeIn [duration]="800" [delay]="1400">
+    <h2 appSlideInRight [duration]="600" [delay]="1500">Información de Contacto</h2>
+    <div class="info-item" appSlideInLeft [delay]="1600">
+      <ion-icon name="mail-outline"></ion-icon>
+      <p>fotos_contacto&#64;gmail.com</p>
+    </div>
+    <div class="info-item" appSlideInRight [delay]="1700">
+      <ion-icon name="call-outline"></ion-icon>
+      <p>+123 456 7890</p>
+    </div>
+    <div class="info-item" appSlideInLeft [delay]="1800">
+      <ion-icon name="location-outline"></ion-icon>
+      <p>Caracas, Venezuela</p>
+    </div>
+  </div>
+</ion-content>

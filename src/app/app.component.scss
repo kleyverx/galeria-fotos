@@ -1,0 +1,184 @@
+// Estilos para la barra de título
+ion-header ion-toolbar {
+  --background: var(--ion-color-primary);
+  --color: var(--ion-color-primary-contrast);
+}
+
+// Estilos para el contenido principal
+ion-content {
+  --background: var(--ion-background-color);
+}
+
+// Mejora de contraste para texto en modo claro
+:root {
+  --ion-text-color: #222428;
+  --ion-text-color-rgb: 34, 36, 40;
+}
+
+// Media query para aplicar color de texto más oscuro en modo claro
+@media (prefers-color-scheme: light) {
+  body {
+    --ion-text-color: #222428;
+    --ion-text-color-rgb: 34, 36, 40;
+    
+    // Colores más oscuros para mejor contraste
+    --ion-color-step-50: #f2f2f2;
+    --ion-color-step-100: #e6e6e6;
+    --ion-color-step-150: #d9d9d9;
+    --ion-color-step-200: #cccccc;
+    --ion-color-step-250: #bfbfbf;
+    --ion-color-step-300: #b3b3b3;
+    --ion-color-step-350: #a6a6a6;
+    --ion-color-step-400: #999999;
+    --ion-color-step-450: #8c8c8c;
+    --ion-color-step-500: #808080;
+    --ion-color-step-550: #737373;
+    --ion-color-step-600: #666666;
+    --ion-color-step-650: #595959;
+    --ion-color-step-700: #4d4d4d;
+    --ion-color-step-750: #404040;
+    --ion-color-step-800: #333333;
+    --ion-color-step-850: #262626;
+    --ion-color-step-900: #191919;
+    --ion-color-step-950: #0d0d0d;
+  }
+}
+
+// Estilos para la barra de tabs
+ion-tab-bar {
+  --background: var(--ion-background-color);
+  border-top: 1px solid var(--ion-color-step-150);
+}
+
+// Estilo para los botones de tab
+ion-tab-button {
+  --color: var(--ion-color-step-600);
+  --color-selected: var(--ion-color-primary);
+  font-size: 12px;
+  
+  &.tab-selected {
+    --background: var(--ion-color-step-50);
+    ion-icon {
+      color: var(--ion-color-primary);
+    }
+    ion-label {
+      color: var(--ion-color-primary);
+      font-weight: 500;
+    }
+  }
+  
+  // Estilos específicos para el botón de tema
+  &:last-child {
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10%;
+      height: 80%;
+      width: 1px;
+      background-color: var(--ion-color-step-150);
+    }
+  }
+}
+
+// Animación de selección de tab
+ion-tab-button.tab-selected ion-icon {
+  transform: scale(1.1);
+  transition: transform 0.2s ease;
+}
+
+// Efecto hover
+ion-tab-button:hover {
+  --background: var(--ion-color-step-50);
+}
+
+// Efecto de botón activo
+ion-tab-button:active {
+  --background: var(--ion-color-step-100);
+}
+
+/* Documentación: Personalización de elementos del menú activos */
+ion-menu ion-item.selected {
+  --background: rgba(var(--ion-color-primary-rgb), 0.14);
+  --color: var(--ion-color-primary);
+  border-left: 3px solid var(--ion-color-tertiary);
+}
+
+ion-menu ion-item.selected ion-icon {
+  color: var(--ion-color-tertiary);
+}
+
+/* Documentación: Personalización del color de los iconos */
+ion-menu ion-icon {
+  color: var(--ion-color-medium);
+}
+
+/* Documentación: Estilos para el divisor del menú */
+ion-menu ion-list {
+  background: transparent;
+  padding-top: 20px;
+}
+
+/* Estilos para el contenedor del selector de tema */
+.theme-container {
+  padding: 0 10px 20px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(var(--ion-color-medium-rgb), 0.2);
+}
+
+.theme-container ion-list-header {
+  padding-top: 15px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+
+/* Estilos para los botones del tema */
+.theme-buttons {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.theme-buttons ion-button {
+  --color: var(--ion-color-medium);
+  text-align: center;
+  flex-direction: column;
+  height: auto;
+  display: flex;
+}
+
+.theme-buttons ion-button ion-icon {
+  font-size: 24px;
+  margin-bottom: 5px;
+  color: var(--ion-color-tertiary);
+}
+
+.theme-buttons ion-button ion-label {
+  font-size: 12px;
+  margin-top: 0;
+}
+
+/* Estilos para el selector de tema */
+.theme-selector {
+  margin: 10px auto;
+  max-width: 300px;
+  --background: rgba(var(--ion-color-light-rgb), 0.2);
+}
+
+.theme-selector ion-segment-button {
+  --color: var(--ion-color-medium);
+  --color-checked: var(--ion-color-primary);
+  --indicator-color: var(--ion-color-tertiary);
+}
+
+.theme-selector ion-segment-button ion-icon {
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.theme-selector ion-segment-button ion-label {
+  font-size: 12px;
+  margin-top: 0;
+}

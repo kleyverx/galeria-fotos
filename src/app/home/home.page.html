@@ -1,0 +1,158 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="fotocoleccion-title">Fotocolección</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-content">
+  <!-- Hero Section -->
+  <div class="hero-section" appFadeIn [duration]="800">
+    <img 
+      src="https://images.unsplash.com/photo-1469474968028-56623f02e42e" 
+      alt="Paisaje de viaje" 
+      class="hero-image">
+    
+    <div class="hero-content">
+      <h1 appSlideInLeft [duration]="600">Captura momentos, crea recuerdos</h1>
+      <p appSlideInRight [duration]="600" [delay]="200">
+        Organiza tus fotografías favoritas y revive tus mejores momentos con una experiencia visual impresionante.
+      </p>
+      <ion-button 
+        expand="block" 
+        size="large" 
+        class="hero-button"
+        appPulse="hover"
+        (click)="exploreCollection()">
+        Explorar mi colección
+        <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
+      </ion-button>
+    </div>
+
+    <ion-button 
+      fill="clear" 
+      size="small" 
+      class="theme-toggle"
+      (click)="toggleTheme()">
+      <ion-icon name="sunny-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- Stats Overview -->
+  <section class="stats-container" appFadeIn [duration]="600" [delay]="300">
+    <div class="stats-overview glass-effect">
+      <div class="stat-item">
+        <ion-icon name="images-outline" aria-hidden="true"></ion-icon>
+        <div class="stat-content">
+          <span class="stat-number" aria-label="Total de fotos">{{stats.photos}}</span>
+          <span class="stat-label">fotos</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <ion-icon name="location-outline" aria-hidden="true"></ion-icon>
+        <div class="stat-content">
+          <span class="stat-number" aria-label="Total de destinos">{{stats.destinations}}</span>
+          <span class="stat-label">destinos</span>
+        </div>
+      </div>
+      <div class="stat-item">
+        <ion-icon name="heart-outline" aria-hidden="true"></ion-icon>
+        <div class="stat-content">
+          <span class="stat-number" aria-label="Total de favoritos">{{stats.favorites}}</span>
+          <span class="stat-label">favoritos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <div class="categories-section" appFadeIn [duration]="700" [delay]="400">
+    <h2 class="section-title" appSlideInLeft [duration]="600">Explora por Categorías</h2>
+    <div class="categories-grid">
+      <ion-card 
+        *ngFor="let category of categories; let i = index"
+        class="category-card glass-effect" 
+        appSlideInLeft 
+        [delay]="600 + (i * 100)"
+        (click)="navigateToCategory(category)">
+        <div class="category-badge">{{category.count}}</div>
+        <div class="category-content">
+          <ion-icon [name]="category.icon" class="category-icon"></ion-icon>
+          <div class="category-info">
+            <h3 class="category-title">{{category.title}}</h3>
+            <p class="category-desc">{{category.description}}</p>
+          </div>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+
+  <!-- Photos Section -->
+  <div class="photos-section" appFadeIn [duration]="700" [delay]="600">
+    <h2 class="section-title" appSlideInRight [duration]="600">Fotografías Recientes</h2>
+    <div class="photos-grid">
+      <div 
+        *ngFor="let foto of fotos.slice(0, 18); let i = index"
+        class="photo-item photo-{{foto.size}}" 
+        appSlideInLeft 
+        [delay]="800 + (i * 100)"
+        (click)="openPhotoModal(foto)">
+        <img [src]="foto.url" [alt]="foto.titulo">
+        <div class="photo-overlay">
+          <h3 class="photo-title">{{foto.titulo}}</h3>
+          <p class="photo-location" *ngIf="foto.ubicacion">
+            <ion-icon name="location-outline"></ion-icon>
+            {{foto.ubicacion}}
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="photos-actions" appFadeIn [duration]="500" [delay]="1200">
+      <ion-button fill="outline" class="ver-mas-button" (click)="exploreCollection()">
+        Ver todas las fotos
+        <ion-icon name="images-outline" slot="end"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div class="about-section" appFadeIn [duration]="700" [delay]="800">
+    <h2 class="section-title" appSlideInLeft [duration]="600">
+      Acerca de esta Colección
+    </h2>
+    <div class="features-grid">
+      <div 
+        *ngFor="let feature of features; let i = index"
+        class="feature-item" 
+        appSlideInLeft 
+        [delay]="1000 + (i * 100)">
+        <ion-icon [name]="feature.icon" class="feature-icon"></ion-icon>
+        <h3 class="feature-title">{{feature.title}}</h3>
+        <p class="feature-description">{{feature.description}}</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="cta-section" appFadeIn [duration]="700" [delay]="1000">
+    <h2 class="cta-title" appSlideInLeft [duration]="600">
+      ¿Listo para Explorar?
+    </h2>
+    <p class="cta-subtitle" appSlideInRight [duration]="600" [delay]="200">
+      Descubre la colección completa de fotografías y sumérgete en historias visuales de diferentes rincones del mundo.
+    </p>
+    <div class="cta-buttons">
+      <ion-button 
+        expand="block" 
+        size="large" 
+        class="cta-button secondary"
+        appPulse="hover"
+        (click)="contactAction()">
+        <ion-icon name="mail-outline" slot="start"></ion-icon>
+        Contactar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

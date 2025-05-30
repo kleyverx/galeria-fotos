@@ -1,0 +1,390 @@
+/**
+ * SISTEMA DE TEMAS DE KLEYVER APP
+ * =============================== 
+ * 
+ * Archivo de variables CSS que define la paleta de colores y el sistema de temas
+ * para la aplicación. Utiliza CSS Custom Properties para un theming dinámico.
+ * 
+ * ARQUITECTURA DEL SISTEMA DE TEMAS:
+ * - Tema Claro: Variables en :root (por defecto)
+ * - Tema Oscuro: Variables en @media (prefers-color-scheme: dark)
+ * - Tema Oscuro Forzado: Clase .dark-theme aplicada por ThemeService
+ * - Tema Claro Forzado: Clase .light-theme aplicada por ThemeService
+ * 
+ * PALETA DE COLORES INSPIRADA EN NATURALEZA:
+ * - Verdes: Fotografía de naturaleza y paisajes
+ * - Tonos tierra: Conexión con elementos naturales
+ * - Contrastes suaves: Legibilidad y accesibilidad
+ * 
+ * BENEFICIOS DE CSS CUSTOM PROPERTIES:
+ * - Cambio dinámico de temas sin recarga
+ * - Mejor rendimiento que recargar hojas de estilo
+ * - Fácil mantenimiento y extensibilidad
+ * - Soporte nativo en navegadores modernos
+ * 
+ * @author Kleyver App Team
+ * @version 1.0.0
+ * @see http://ionicframework.com/docs/theming/
+ */
+
+// filepath: /Users/marg/Documents/ionic/kleyver-app/src/theme/variables.scss
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+/**
+ * TEMA CLARO - VARIABLES CSS CUSTOM PROPERTIES
+ * ============================================
+ * 
+ * Definición del tema claro como tema por defecto de la aplicación.
+ * Inspirado en tonos naturales y verdes que reflejan la temática fotográfica.
+ * 
+ * PALETA PRINCIPAL:
+ * - Primary: Verde oscuro #285837 (elementos principales, botones)
+ * - Secondary: Verde claro #8bdaa4 (elementos secundarios, acentos)
+ * - Tertiary: Verde vibrante #23a94b (llamadas a la acción)
+ * 
+ * FILOSOFÍA DE DISEÑO:
+ * - Contraste alto para accesibilidad
+ * - Tonos suaves que no compiten con las fotos
+ * - Inspiración en la naturaleza (tema del fotógrafo)
+ */
+:root {
+  /** 
+   * COLOR PRIMARIO - VERDE OSCURO NATURAL
+   * =====================================
+   * 
+   * Usado para: Headers, botones principales, elementos de navegación
+   * RGB: 40, 88, 55 - Verde profundo que evoca bosques y naturaleza
+   */
+  --ion-color-primary: #285837;
+  --ion-color-primary-rgb: 40, 88, 55;
+  --ion-color-primary-contrast: #f0f5f1;
+  --ion-color-primary-contrast-rgb: 240, 245, 241;
+  --ion-color-primary-shade: #234d30;
+  --ion-color-primary-tint: #3e694b;
+
+  /**
+   * COLOR SECUNDARIO - VERDE MENTA SUAVE
+   * ====================================
+   * 
+   * Usado para: Elementos de soporte, fondos suaves, indicadores
+   * RGB: 139, 218, 164 - Verde suave que complementa sin competir
+   */
+  --ion-color-secondary: #8bdaa4;
+  --ion-color-secondary-rgb: 139, 218, 164;
+  --ion-color-secondary-contrast: #285837;
+  --ion-color-secondary-contrast-rgb: 40, 88, 55;
+  --ion-color-secondary-shade: #7ac090;
+  --ion-color-secondary-tint: #97dead;
+
+  /**
+   * COLOR TERCIARIO - VERDE VIBRANTE
+   * ================================
+   * 
+   * Usado para: Llamadas a la acción, elementos de éxito, destacados
+   * RGB: 35, 169, 75 - Verde energético para elementos importantes
+   */
+  --ion-color-tertiary: #23a94b;
+  --ion-color-tertiary-rgb: 35, 169, 75;
+  --ion-color-tertiary-contrast: #f0f5f1;
+  --ion-color-tertiary-contrast-rgb: 240, 245, 241;
+  --ion-color-tertiary-shade: #1f9542;
+  --ion-color-tertiary-tint: #39b25d;
+
+  // ...existing color definitions...
+  --ion-color-success: #23a94b;
+  --ion-color-success-rgb: 35, 169, 75;
+  --ion-color-success-contrast: #f0f5f1;
+  --ion-color-success-contrast-rgb: 240, 245, 241;
+  --ion-color-success-shade: #1f9542;
+  --ion-color-success-tint: #39b25d;
+
+  --ion-color-warning: #ffc409;
+  --ion-color-warning-rgb: 255, 196, 9;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e0ac08;
+  --ion-color-warning-tint: #ffca22;
+
+  --ion-color-danger: #eb445a;
+  --ion-color-danger-rgb: 235, 68, 90;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #cf3c4f;
+  --ion-color-danger-tint: #ed576b;
+
+  --ion-color-dark: #285837;
+  --ion-color-dark-rgb: 40, 88, 55;
+  --ion-color-dark-contrast: #f0f5f1;
+  --ion-color-dark-contrast-rgb: 240, 245, 241;
+  --ion-color-dark-shade: #234d30;
+  --ion-color-dark-tint: #3e694b;
+
+  --ion-color-medium: #57986a;
+  --ion-color-medium-rgb: 87, 152, 106;
+  --ion-color-medium-contrast: #f0f5f1;
+  --ion-color-medium-contrast-rgb: 240, 245, 241;
+  --ion-color-medium-shade: #4d865d;
+  --ion-color-medium-tint: #68a279;
+
+  --ion-color-light: #ddf0e2;
+  --ion-color-light-rgb: 221, 240, 226;
+  --ion-color-light-contrast: #285837;
+  --ion-color-light-contrast-rgb: 40, 88, 55;
+  --ion-color-light-shade: #c2d3c7;
+  --ion-color-light-tint: #e0f2e5;
+
+  /* Documentación: Variables para el tema claro de la aplicación */
+  --ion-background-color: #f0f5f1;
+  --ion-background-color-rgb: 240, 245, 241;
+  --ion-text-color: #285837;
+  --ion-text-color-rgb: 40, 88, 55;
+
+  --ion-card-background: #ffffff;
+  --ion-item-background: #ffffff;
+  --ion-toolbar-background: #f0f5f1;
+  --ion-tab-bar-background: #f0f5f1;
+  --ion-tab-bar-color: #57986a;
+  --ion-tab-bar-color-selected: #285837;
+}
+
+/** 
+ * Tema oscuro (dark mode)
+ */
+@media (prefers-color-scheme: dark) {
+  body:not(.light-theme) {
+    --ion-color-primary: #a7d7b6;
+    --ion-color-primary-rgb: 167, 215, 182;
+    --ion-color-primary-contrast: #0a0f0b;
+    --ion-color-primary-contrast-rgb: 10, 15, 11;
+    --ion-color-primary-shade: #93bea0;
+    --ion-color-primary-tint: #b0dbbd;
+
+    --ion-color-secondary: #25743e;
+    --ion-color-secondary-rgb: 37, 116, 62;
+    --ion-color-secondary-contrast: #f1f3f1;
+    --ion-color-secondary-contrast-rgb: 241, 243, 241;
+    --ion-color-secondary-shade: #216537;
+    --ion-color-secondary-tint: #3b8251;
+
+    --ion-color-tertiary: #56dc7e;
+    --ion-color-tertiary-rgb: 86, 220, 126;
+    --ion-color-tertiary-contrast: #0a0f0b;
+    --ion-color-tertiary-contrast-rgb: 10, 15, 11;
+    --ion-color-tertiary-shade: #4cc26f;
+    --ion-color-tertiary-tint: #67e08b;
+
+    --ion-color-success: #56dc7e;
+    --ion-color-success-rgb: 86, 220, 126;
+    --ion-color-success-contrast: #0a0f0b;
+    --ion-color-success-contrast-rgb: 10, 15, 11;
+    --ion-color-success-shade: #4cc26f;
+    --ion-color-success-tint: #67e08b;
+
+    --ion-color-warning: #ffd534;
+    --ion-color-warning-rgb: 255, 213, 52;
+    --ion-color-warning-contrast: #000000;
+    --ion-color-warning-contrast-rgb: 0, 0, 0;
+    --ion-color-warning-shade: #e0bb2e;
+    --ion-color-warning-tint: #ffd948;
+
+    --ion-color-danger: #ff4961;
+    --ion-color-danger-rgb: 255, 73, 97;
+    --ion-color-danger-contrast: #ffffff;
+    --ion-color-danger-contrast-rgb: 255, 255, 255;
+    --ion-color-danger-shade: #e04055;
+    --ion-color-danger-tint: #ff5b71;
+
+    --ion-color-dark: #f1f3f1;
+    --ion-color-dark-rgb: 241, 243, 241;
+    --ion-color-dark-contrast: #0a0f0b;
+    --ion-color-dark-contrast-rgb: 10, 15, 11;
+    --ion-color-dark-shade: #d4d7d4;
+    --ion-color-dark-tint: #f2f4f2;
+
+    --ion-color-medium: #86a28e;
+    --ion-color-medium-rgb: 134, 162, 142;
+    --ion-color-medium-contrast: #0a0f0b;
+    --ion-color-medium-contrast-rgb: 10, 15, 11;
+    --ion-color-medium-shade: #768f7d;
+    --ion-color-medium-tint: #92ab99;
+
+    --ion-color-light: #244630;
+    --ion-color-light-rgb: 36, 70, 48;
+    --ion-color-light-contrast: #f1f3f1;
+    --ion-color-light-contrast-rgb: 241, 243, 241;
+    --ion-color-light-shade: #203d2a;
+    --ion-color-light-tint: #3a5945;
+
+    /* Documentación: Variables para el tema oscuro de la aplicación */
+    --ion-background-color: #0a0f0b;
+    --ion-background-color-rgb: 10, 15, 11;
+    --ion-text-color: #f1f3f1;
+    --ion-text-color-rgb: 241, 243, 241;
+
+    --ion-card-background: #101810;
+    --ion-item-background: #101810;
+    --ion-toolbar-background: #0c120d;
+    --ion-tab-bar-background: #0c120d;
+    --ion-tab-bar-color: #86a28e;
+    --ion-tab-bar-color-selected: #a7d7b6;
+  }
+}
+
+/* Tema oscuro forzado independiente de las preferencias del sistema */
+.dark-theme {
+  --ion-color-primary: #a7d7b6;
+  --ion-color-primary-rgb: 167, 215, 182;
+  --ion-color-primary-contrast: #0a0f0b;
+  --ion-color-primary-contrast-rgb: 10, 15, 11;
+  --ion-color-primary-shade: #93bea0;
+  --ion-color-primary-tint: #b0dbbd;
+
+  --ion-color-secondary: #25743e;
+  --ion-color-secondary-rgb: 37, 116, 62;
+  --ion-color-secondary-contrast: #f1f3f1;
+  --ion-color-secondary-contrast-rgb: 241, 243, 241;
+  --ion-color-secondary-shade: #216537;
+  --ion-color-secondary-tint: #3b8251;
+
+  --ion-color-tertiary: #56dc7e;
+  --ion-color-tertiary-rgb: 86, 220, 126;
+  --ion-color-tertiary-contrast: #0a0f0b;
+  --ion-color-tertiary-contrast-rgb: 10, 15, 11;
+  --ion-color-tertiary-shade: #4cc26f;
+  --ion-color-tertiary-tint: #67e08b;
+
+  --ion-color-success: #56dc7e;
+  --ion-color-success-rgb: 86, 220, 126;
+  --ion-color-success-contrast: #0a0f0b;
+  --ion-color-success-contrast-rgb: 10, 15, 11;
+  --ion-color-success-shade: #4cc26f;
+  --ion-color-success-tint: #67e08b;
+
+  --ion-color-warning: #ffd534;
+  --ion-color-warning-rgb: 255, 213, 52;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e0bb2e;
+  --ion-color-warning-tint: #ffd948;
+
+  --ion-color-danger: #ff4961;
+  --ion-color-danger-rgb: 255, 73, 97;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #e04055;
+  --ion-color-danger-tint: #ff5b71;
+
+  --ion-color-dark: #f1f3f1;
+  --ion-color-dark-rgb: 241, 243, 241;
+  --ion-color-dark-contrast: #0a0f0b;
+  --ion-color-dark-contrast-rgb: 10, 15, 11;
+  --ion-color-dark-shade: #d4d7d4;
+  --ion-color-dark-tint: #f2f4f2;
+
+  --ion-color-medium: #86a28e;
+  --ion-color-medium-rgb: 134, 162, 142;
+  --ion-color-medium-contrast: #0a0f0b;
+  --ion-color-medium-contrast-rgb: 10, 15, 11;
+  --ion-color-medium-shade: #768f7d;
+  --ion-color-medium-tint: #92ab99;
+
+  --ion-color-light: #244630;
+  --ion-color-light-rgb: 36, 70, 48;
+  --ion-color-light-contrast: #f1f3f1;
+  --ion-color-light-contrast-rgb: 241, 243, 241;
+  --ion-color-light-shade: #203d2a;
+  --ion-color-light-tint: #3a5945;
+
+  /* Documentación: Variables para el tema oscuro de la aplicación */
+  --ion-background-color: #0a0f0b;
+  --ion-background-color-rgb: 10, 15, 11;
+  --ion-text-color: #f1f3f1;
+  --ion-text-color-rgb: 241, 243, 241;
+
+  --ion-card-background: #101810;
+  --ion-item-background: #101810;
+  --ion-toolbar-background: #0c120d;
+  --ion-tab-bar-background: #0c120d;
+  --ion-tab-bar-color: #86a28e;
+  --ion-tab-bar-color-selected: #a7d7b6;
+}
+
+/* Tema claro forzado independiente de las preferencias del sistema */
+.light-theme {
+  --ion-color-primary: #285837;
+  --ion-color-primary-rgb: 40, 88, 55;
+  --ion-color-primary-contrast: #f0f5f1;
+  --ion-color-primary-contrast-rgb: 240, 245, 241;
+  --ion-color-primary-shade: #234d30;
+  --ion-color-primary-tint: #3e694b;
+
+  --ion-color-secondary: #8bdaa4;
+  --ion-color-secondary-rgb: 139, 218, 164;
+  --ion-color-secondary-contrast: #285837;
+  --ion-color-secondary-contrast-rgb: 40, 88, 55;
+  --ion-color-secondary-shade: #7ac090;
+  --ion-color-secondary-tint: #97dead;
+
+  --ion-color-tertiary: #23a94b;
+  --ion-color-tertiary-rgb: 35, 169, 75;
+  --ion-color-tertiary-contrast: #f0f5f1;
+  --ion-color-tertiary-contrast-rgb: 240, 245, 241;
+  --ion-color-tertiary-shade: #1f9542;
+  --ion-color-tertiary-tint: #39b25d;
+
+  --ion-color-success: #23a94b;
+  --ion-color-success-rgb: 35, 169, 75;
+  --ion-color-success-contrast: #f0f5f1;
+  --ion-color-success-contrast-rgb: 240, 245, 241;
+  --ion-color-success-shade: #1f9542;
+  --ion-color-success-tint: #39b25d;
+
+  --ion-color-warning: #ffc409;
+  --ion-color-warning-rgb: 255, 196, 9;
+  --ion-color-warning-contrast: #000000;
+  --ion-color-warning-contrast-rgb: 0, 0, 0;
+  --ion-color-warning-shade: #e0ac08;
+  --ion-color-warning-tint: #ffca22;
+
+  --ion-color-danger: #eb445a;
+  --ion-color-danger-rgb: 235, 68, 90;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #cf3c4f;
+  --ion-color-danger-tint: #ed576b;
+
+  --ion-color-dark: #285837;
+  --ion-color-dark-rgb: 40, 88, 55;
+  --ion-color-dark-contrast: #f0f5f1;
+  --ion-color-dark-contrast-rgb: 240, 245, 241;
+  --ion-color-dark-shade: #234d30;
+  --ion-color-dark-tint: #3e694b;
+
+  --ion-color-medium: #57986a;
+  --ion-color-medium-rgb: 87, 152, 106;
+  --ion-color-medium-contrast: #f0f5f1;
+  --ion-color-medium-contrast-rgb: 240, 245, 241;
+  --ion-color-medium-shade: #4d865d;
+  --ion-color-medium-tint: #68a279;
+
+  --ion-color-light: #ddf0e2;
+  --ion-color-light-rgb: 221, 240, 226;
+  --ion-color-light-contrast: #285837;
+  --ion-color-light-contrast-rgb: 40, 88, 55;
+  --ion-color-light-shade: #c2d3c7;
+  --ion-color-light-tint: #e0f2e5;
+
+  /* Documentación: Variables para el tema claro de la aplicación */
+  --ion-background-color: #f0f5f1;
+  --ion-background-color-rgb: 240, 245, 241;
+  --ion-text-color: #285837;
+  --ion-text-color-rgb: 40, 88, 55;
+
+  --ion-card-background: #ffffff;
+  --ion-item-background: #ffffff;
+  --ion-toolbar-background: #f0f5f1;
+  --ion-tab-bar-background: #f0f5f1;
+  --ion-tab-bar-color: #57986a;
+  --ion-tab-bar-color-selected: #285837;
+}
