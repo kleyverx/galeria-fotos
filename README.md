@@ -9,6 +9,8 @@ Kleyver App es una aplicación móvil híbrida desarrollada con Ionic y Angular 
 - **Galería de Fotos**: Visualización de imágenes con animaciones
 - **Perfil de Fotógrafo**: Sección de información personal y profesional
 - **Formulario de Contacto**: Comunicación directa con validaciones en tiempo real
+- **Backend Integrado**: API REST simple para gestión de datos
+- **Servicio de Email**: Envío de formularios de contacto
 - **Diseño Responsivo**: Adaptable a diferentes tamaños de pantalla y dispositivos
 - **Soporte Multiplataforma**: Funciona en iOS y Android desde una única base de código
 
@@ -39,6 +41,9 @@ npm install
 
 # Instalar Ionic CLI globalmente (si no lo tienes)
 npm install -g @ionic/cli
+
+# Configurar el backend (opcional)
+bash setup-backend.sh
 ```
 
 ## Comandos de Desarrollo
@@ -77,14 +82,16 @@ kleyver-app/
 │   │   ├── components/       # Componentes reutilizables
 │   │   ├── directives/       # Directivas personalizadas
 │   │   ├── home/             # Página principal con galería
-│   │   ├── pages/            # Páginas adicionales (contacto, info personal)
-│   │   └── services/         # Servicios para lógica de negocio
+│   │   ├── pages/            # Páginas adicionales (contacto, info personal, favoritos)
+│   │   └── services/         # Servicios para lógica de negocio y comunicación backend
 │   ├── assets/               # Recursos estáticos (imágenes, fuentes, etc.)
 │   ├── environments/         # Configuraciones de entorno
 │   └── theme/                # Variables y estilos globales
 ├── android/                  # Proyecto nativo de Android (generado por Capacitor)
 ├── ios/                      # Proyecto nativo de iOS (generado por Capacitor)
+├── backend/                  # Servidor backend para APIs y servicios
 ├── www/                      # Build de producción (generado al compilar)
+├── setup-backend.sh          # Script para configurar el servidor backend
 ├── capacitor.config.ts       # Configuración de Capacitor
 ├── angular.json              # Configuración de Angular
 └── ionic.config.json         # Configuración de Ionic
@@ -100,7 +107,7 @@ La aplicación utiliza el sistema de rutas de Angular con lazy loading para opti
 
 ## Funcionalidades Pendientes
 
-- **Sistema de Favoritos**: La funcionalidad para marcar fotos como favoritas está planeada para futuras versiones pero no está habilitada actualmente.
+- **Sistema de Favoritos**: La funcionalidad para marcar fotos como favoritas está planeada para futuras versiones pero no está implementada actualmente.
 - **Filtros de Imágenes**: Se planea añadir capacidad para aplicar filtros a las imágenes.
 - **Compartir en Redes Sociales**: Integración con plataformas sociales en desarrollo.
 
@@ -134,6 +141,11 @@ Para desarrollar o mantener esta aplicación se recomienda tener conocimientos e
    - Diseño responsivo
    - Animaciones y transiciones
 
+6. **Backend (Node.js)**:
+   - API REST básica
+   - Servicios de email
+   - Gestión de datos
+
 ## Compilación para Producción
 
 Para generar una versión de producción y preparar la aplicación para su distribución:
@@ -149,6 +161,10 @@ ionic cap sync
 # Generar recursos (íconos y splash screens)
 ionic cap generate
 
+# Iniciar el servidor backend (opcional)
+cd backend
+npm start
+
 # Abrir en IDE nativo para compilación final
 ionic cap open ios     # Para iOS
 ionic cap open android # Para Android
@@ -159,7 +175,8 @@ ionic cap open android # Para Android
 - **Error en la instalación de dependencias**: Asegúrate de usar la versión correcta de Node.js y npm
 - **Problemas de compilación nativa**: Verifica que Xcode o Android Studio estén correctamente configurados
 - **Errores en plugins nativos**: Ejecuta `ionic cap sync` para sincronizar los cambios
-- **Problemas con la galería de fotos**: Actualmente solo está habilitada la visualización de imágenes. El sistema de favoritos no está implementado.
+- **Problemas con la galería de fotos**: Si experimentas problemas cargando imágenes, verifica la conexión de red.
+- **Errores del backend**: Asegúrate de que el servidor backend esté en ejecución si utilizas funcionalidades que lo requieran.
 
 ## Contribución
 

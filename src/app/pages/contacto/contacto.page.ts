@@ -27,6 +27,7 @@ import { SlideInLeftDirective } from '../../directives/slide-in-left.directive';
 import { SlideInRightDirective } from '../../directives/slide-in-right.directive';
 import { PulseDirective } from '../../directives/pulse.directive';
 import { AnimationService } from '../../services/animation.service';
+import { EmailService } from '../../services/email.service';
 import { addIcons } from 'ionicons';
 import { 
   paperPlaneOutline, 
@@ -102,7 +103,8 @@ export class ContactoPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private toastController: ToastController,
-    private animationService: AnimationService
+    private animationService: AnimationService,
+    private emailService: EmailService
   ) { 
     /**
      * Registro de iconos específicos para esta página
@@ -185,60 +187,120 @@ export class ContactoPage implements OnInit {
    * 
    * Proceso completo:
    * 1. Valida que el formulario esté correcto
-   * 2. Si es válido: muestra animación, toast de confirmación y resetea
+   * 2. Si es válido: envía email real, muestra animación y resetea
    * 3. Si es inválido: marca campos como tocados y anima shake de error
    * 
-   * En una implementación real, aquí se enviarían los datos
-   * a un servidor o servicio de email
+   * NUEVO: Implementación con backend real usando EmailJS
    */
   async enviarMensaje() {
     if (this.contactForm.valid) {
-      // Log para debugging (en producción se enviaría a servidor)
-      console.log('Formulario enviado:', this.contactForm.value);
-      
-      /**
-       * Animación de feedback positivo
-       * 
-       * Proporciona confirmación visual inmediata al usuario
-       * de que su acción fue registrada exitosamente
-       */
+      // Mostrar loading state
       const submitButton = document.querySelector('.submit-button');
+      const originalText = submitButton?.textContent;
       if (submitButton) {
-        const animation = this.animationService.createPulseAnimation(submitButton as HTMLElement, 300);
-        animation.play();
-        setTimeout(() => {
-          animation.stop();
-          animation.destroy();
-        }, 300);
+        submitButton.textContent = 'Enviando...';
+        (submitButton as HTMLElement).style.opacity = '0.7';
+      }
+
+      try {
+        // ENVÍO REAL DE EMAIL usando el servicio
+        const resultado = await this.emailService.enviarEmailContacto(this.contactForm.value);
+        
+        if (resultado.success) {
+          /**
+           * CASO EXITOSO: Email enviado correctamente
+           */
+          console.log('✅ Formulario enviado exitosamente:', {
+            datos: this.contactForm.value,
+            respuesta: resultado.data
+          });
+          
+          // Animación de confirmación
+          if (submitButton) {
+            const animation = this.animationService.createPulseAnimation(submitButton as HTMLElement, 300);
+            animation.play();
+            setTimeout(() => {
+              animation.stop();
+              animation.destroy();
+            }, 300);
+          }
+          
+          // Toast de confirmación exitosa
+          const toast = await this.toastController.create({
+            message: '✅ Mensaje enviado correctamente. Te responderé pronto.',
+            duration: 3000,
+            position: 'bottom',
+            color: 'success',
+            buttons: [{
+              text: 'Cerrar',
+              role: 'cancel'
+            }]
+          });
+          await toast.present();
+          
+          // Reset del formulario
+          this.contactForm.reset({
+            asunto: 'info',
+            suscripcion: false
+          });
+
+          // Opcional: Enviar confirmación al usuario
+          if (this.contactForm.value.email) {
+            await this.emailService.enviarConfirmacionUsuario(this.contactForm.value);
+          }
+          
+        } else {
+          /**
+           * CASO ERROR: Fallo en el envío
+           */
+          console.error('❌ Error al enviar formulario:', resultado.error);
+          
+          // Toast de error específico
+          const toast = await this.toastController.create({
+            message: '❌ ' + resultado.message,
+            duration: 4000,
+            position: 'bottom',
+            color: 'danger',
+            buttons: [{
+              text: 'Reintentar',
+              role: 'cancel'
+            }]
+          });
+          await toast.present();
+          
+          // Animación de error
+          const formContainer = document.querySelector('.form-container');
+          if (formContainer) {
+            const shakeAnimation = this.animationService.createShakeAnimation(formContainer as HTMLElement);
+            shakeAnimation.play();
+          }
+        }
+        
+      } catch (error) {
+        /**
+         * CASO ERROR CRÍTICO: Excepción no controlada
+         */
+        console.error('💥 Error crítico en envío:', error);
+        
+        const toast = await this.toastController.create({
+          message: '💥 Error de conexión. Verifica tu internet e inténtalo de nuevo.',
+          duration: 4000,
+          position: 'bottom',
+          color: 'danger'
+        });
+        await toast.present();
+        
+      } finally {
+        // Restaurar estado del botón
+        if (submitButton && originalText) {
+          submitButton.textContent = originalText;
+          (submitButton as HTMLElement).style.opacity = '1';
+        }
       }
       
-      /**
-       * Toast de confirmación
-       * 
-       * Notificación no intrusiva que confirma el envío exitoso
-       * Se posiciona en la parte inferior para no interferir con el contenido
-       */
-      const toast = await this.toastController.create({
-        message: 'Mensaje enviado correctamente. Gracias por contactarme.',
-        duration: 2000,
-        position: 'bottom',
-        color: 'success'
-      });
-      toast.present();
-      
-      /**
-       * Reset del formulario
-       * 
-       * Limpia todos los campos pero mantiene valores por defecto
-       * para asunto y suscripción, mejorando la UX
-       */
-      this.contactForm.reset({
-        asunto: 'info',
-        suscripcion: false
-      });
     } else {
       /**
-       * Manejo de formulario inválido
+       * CASO FORMULARIO INVÁLIDO
        * 
        * 1. Marca todos los campos como tocados para activar validaciones visuales
        * 2. Aplica animación de shake para feedback negativo claro
@@ -250,17 +312,21 @@ export class ContactoPage implements OnInit {
         }
       });
       
-      /**
-       * Animación de error
-       * 
-       * El shake indica claramente que algo está mal sin ser agresivo
-       * Ayuda a dirigir la atención del usuario a los errores de validación
-       */
+      // Animación de error de validación
       const formContainer = document.querySelector('.form-container');
       if (formContainer) {
         const shakeAnimation = this.animationService.createShakeAnimation(formContainer as HTMLElement);
         shakeAnimation.play();
       }
+      
+      // Toast informativo sobre errores de validación
+      const toast = await this.toastController.create({
+        message: '⚠️ Por favor, completa todos los campos obligatorios correctamente.',
+        duration: 3000,
+        position: 'bottom',
+        color: 'warning'
+      });
+      await toast.present();
     }
   }
 }
