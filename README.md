@@ -175,8 +175,9 @@ ionic cap open android # Para Android
 - **Error en la instalación de dependencias**: Asegúrate de usar la versión correcta de Node.js y npm
 - **Problemas de compilación nativa**: Verifica que Xcode o Android Studio estén correctamente configurados
 - **Errores en plugins nativos**: Ejecuta `ionic cap sync` para sincronizar los cambios
-- **Problemas con la galería de fotos**: Si experimentas problemas cargando imágenes, verifica la conexión de red.
-- **Errores del backend**: Asegúrate de que el servidor backend esté en ejecución si utilizas funcionalidades que lo requieran.
+- **Problemas con la galería de fotos**: Si experimentas problemas cargando imágenes, verifica la conexión de red
+- **Errores del backend**: Asegúrate de que el servidor backend esté en ejecución si utilizas funcionalidades que lo requieran
+- **Sistema de favoritos**: Actualmente la sección de favoritos está estructurada pero no implementada funcionalmente. Esta característica está planificada para futuras versiones.
 
 ## Contribución
 
